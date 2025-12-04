@@ -171,6 +171,10 @@
   if collapse_header_paddings_class
     assign class = class | append: ' ' | append: collapse_header_paddings_class
   endif
+
+  if request.locale.iso_code == 'ar'
+    assign class = class | append: ' header--rtl'
+  endif
 %}
 
 <script type="application/ld+json">
@@ -594,6 +598,10 @@
 
   .header.header--compact {
     --header-padding: var(--padding-2xs);
+  }
+
+  .header.header--rtl {
+    direction: rtl;
   }
 
   .header__columns {
