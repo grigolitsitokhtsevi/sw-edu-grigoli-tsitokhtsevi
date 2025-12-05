@@ -22,8 +22,8 @@ jobs:
         run: |
           shopify theme push \
             --json \
-            # --ignore config/settings_data.json templates/*.json sections/*.json \ # Commented to include all files
             --theme ${{ secrets.SHOPIFY_THEME_ID }} \
             --store ${{ secrets.SHOPIFY_STORE }} \
             --password ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }} \
             --allow-live
+            # --ignore config/settings_data.json templates/*.json sections/*.json \ # Commented to include all files
