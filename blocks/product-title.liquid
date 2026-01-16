@@ -1,18 +1,38 @@
-
-
 {% if closest.product == blank %}
   {% assign text = 'placeholders.product_title' | t %}
   {% assign product_title = '<p>' | append: text | append: '</p>' %}
   {% render 'text', fallback_text: product_title, block: block %}
 {% elsif closest.product != blank %}
   {% assign product_title = '<p>' | append: closest.product.title | append: '</p>' %}
-  <a
-    class="contents user-select-text"
-    ref="productTitleLink"
-    href="{% render 'product-card-variant-url', product: closest.product %}"
-  >
-    {% render 'text', fallback_text: product_title, block: block %}
-  </a>
+  <div class="product-title-wrapper">
+    <a
+      class="contents user-select-text"
+      ref="productTitleLink"
+      href="{% render 'product-card-variant-url', product: closest.product %}"
+    >
+      {% render 'text', fallback_text: product_title, block: block %}
+    </a>
+    {% if closest.product.variants_count == 1 and closest.product.available %}
+      <product-title-add-to-cart
+        class="product-title-add-to-cart"
+        data-variant-id="{{ closest.product.variants.first.id }}"
+        data-product-id="{{ closest.product.id }}"
+      >
+        <button
+          type="button"
+          name="add"
+          ref="addToCartButton"
+          on:click="/handleClick"
+          class="button product-title-atc-button"
+          aria-label="{{ 'products.product.add_to_cart' | t }}"
+        >
+          <span class="svg-wrapper add-to-cart-icon">
+            {{- 'icon-add-to-cart.svg' | inline_asset_content -}}
+          </span>
+        </button>
+      </product-title-add-to-cart>
+    {% endif %}
+  </div>
 {% endif %}
 
 {% schema %}

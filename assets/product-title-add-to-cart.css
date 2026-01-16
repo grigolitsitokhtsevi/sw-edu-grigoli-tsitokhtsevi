@@ -1,0 +1,57 @@
+.product-title-wrapper {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.product-title-add-to-cart {
+  display: inline-flex;
+  flex-shrink: 0;
+  padding: 0.5rem;
+}
+
+.product-title-atc-button {
+  padding: 0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.product-title-atc-button .svg-wrapper {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.product-title-atc-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.product-title-atc-button.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.product-title-atc-button.success {
+  background-color: var(--color-success, #4caf50);
+  color: white;
+}
+
+.product-title-atc-button.error {
+  background-color: var(--color-error, #f44336);
+  color: white;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
